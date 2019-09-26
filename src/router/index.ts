@@ -15,9 +15,9 @@ const routes = [
     component: () => import("../views/About.vue")
   },
   {
-    path: "/example",
-    name: "example",
-    component: () => import("../views/Example.vue")
+    path: "/minimum_sample",
+    name: "minimum_sample",
+    component: () => import("../views/MinimumSample.vue")
   },
   {
     path: "/use_mouse_sample",
