@@ -1,15 +1,31 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>|
-      <router-link to="/minimum_sample">MinimumSample</router-link>|
-      <router-link to="/use_mouse_sample">UseMouseSample</router-link>|
-      <router-link to="/watch_sample">WatchSample</router-link>
+      <template v-for="(route, i) in routes">
+        <router-link :to="route.path" :key="route.path">{{
+          route.name.toUpperCase()
+        }}</router-link>
+        <template v-if="i !== routes.length - 1">
+          <br :key="'br' + route.path" />
+        </template>
+      </template>
     </div>
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import { createComponent, reactive, ref } from "@vue/composition-api";
+import { routes } from "./router";
+
+export default createComponent({
+  setup() {
+    return {
+      routes
+    };
+  }
+});
+</script>
 
 <style lang="scss">
 #app {

@@ -3,6 +3,7 @@
     <h2>mouse pointer</h2>
     <div>x: {{ x }}</div>
     <div>y: {{ y }}</div>
+    <h2>counter pointer</h2>
     <div>counter: {{ counter }}</div>
     <button @click="inc">inc</button>
     <button @click="dec">dec</button>
