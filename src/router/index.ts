@@ -20,9 +20,9 @@ const routes = [
     component: () => import("../views/Example.vue")
   },
   {
-    path: "/example2",
-    name: "example2",
-    component: () => import("../views/Example2.vue")
+    path: "/use_mouse_sample",
+    name: "use_mouse_sample",
+    component: () => import("../views/UseMouseSample.vue")
   },
   {
     path: "/watch_sample",
