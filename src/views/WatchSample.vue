@@ -14,6 +14,7 @@
 import { createComponent, watch } from "@vue/composition-api";
 import { useMouse } from "@/hooks/useMouse";
 import { useCounter } from "@/hooks/useCounter";
+import { useLifeCycleLog } from "@/hooks/useLifeCycleLog";
 
 export default createComponent({
   setup() {
@@ -30,6 +31,7 @@ export default createComponent({
     watch(() => {
       console.log("not working", counter);
     });
+    useLifeCycleLog();
 
     return {
       x,
