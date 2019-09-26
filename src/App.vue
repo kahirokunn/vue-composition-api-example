@@ -1,28 +1,22 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <template v-for="(route, i) in routes">
-        <router-link :to="route.path" :key="route.path">{{
-          route.name.toUpperCase()
-        }}</router-link>
-        <template v-if="i !== routes.length - 1">
-          <br :key="'br' + route.path" />
-        </template>
-      </template>
-    </div>
-    <router-view />
-  </div>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 import { createComponent, reactive, ref } from "@vue/composition-api";
 import { routes } from "./router";
 
 export default createComponent({
-  setup() {
-    return {
-      routes
-    };
+  render(h) {
+    return (
+      <div id="app">
+        <div id="nav">
+          {routes.map((route, i) => [
+            <router-link to={route.path} key={route.path}>
+              {route.name.toUpperCase()}
+            </router-link>,
+            i !== routes.length - 1 && <br key={`br${route.path}`} />
+          ])}
+        </div>
+        <router-view />
+      </div>
+    );
   }
 });
 </script>
