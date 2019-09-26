@@ -8,40 +8,20 @@
 </template>
 
 <script lang="ts">
-import {
-  createComponent,
-  reactive,
-  ref,
-  onMounted,
-  onUnmounted,
-  toRefs
-} from "@vue/composition-api";
-
-function useMouse() {
-  const pos = reactive({ x: 0, y: 0 });
-  const update = (e: MouseEvent) => {
-    pos.x = e.pageX;
-    pos.y = e.pageY;
-  };
-  onMounted(() => {
-    window.addEventListener("mousemove", update);
-  });
-  onUnmounted(() => {
-    window.removeEventListener("mousemove", update);
-  });
-  return toRefs(pos);
-}
+import { createComponent } from "@vue/composition-api";
+import { useMouse } from "@/hooks/useMouse";
 
 export default createComponent({
-  setup() {
-    const pos = useMouse();
+  setup () {
+    const { x, y } = useMouse();
 
     return {
-      ...pos,
+      x,
+      y,
       setDummyPos: () => {
         // これはreadonlyなcomputedの為エラーがでる
-        pos.x.value = Math.random();
-        pos.y.value = Math.random();
+        x.value = Math.random();
+        y.value = Math.random();
       }
     };
   }
